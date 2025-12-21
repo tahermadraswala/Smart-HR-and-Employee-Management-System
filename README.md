@@ -1,4 +1,3 @@
-# Smart-HR-and-Employee-Management-System
 # Smart HR & Employee Management System
 
 A modern, full‑stack Smart HR and Employee Management System built with **FastAPI** (backend), **PostgreSQL** (database), and **React (Vite + Tailwind CSS)** (frontend). The project includes AI‑powered features (OpenAI integration), Dockerized infrastructure, and production‑ready patterns such as Alembic migrations and modular code organization.
