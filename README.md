@@ -1,262 +1,194 @@
-# Smart HR & Employee Management System
+Build a modern, production-ready HR and Employee Management System inspired by platforms like BambooHR, Zoho People, Darwinbox, Keka, and Rippling.
 
-A modern, full‑stack Smart HR and Employee Management System built with **FastAPI** (backend), **PostgreSQL** (database), and **React (Vite + Tailwind CSS)** (frontend). The project includes AI‑powered features (OpenAI integration), Dockerized infrastructure, and production‑ready patterns such as Alembic migrations and modular code organization.
+🧱 Tech Stack (Strict)
 
----
+Frontend: React.js (JavaScript)
 
-## 🚀 Project Status
+Backend: FastAPI (Python)
 
-**Backend (FastAPI + PostgreSQL)** ✅
+Database: PostgreSQL
 
-* Core setup files: `main.py`, `config.py`, `database.py`, `auth.py`
-* Database models: `User`, `Employee`, `Attendance`, `Leave`, `Recruitment`, `Payroll`, `Performance`
-* Pydantic schemas for request/response validation
-* Complete REST API routes for all modules
-* AI service integration (OpenAI)
-* Utility functions: email, PDF generation (salary slips, reports), helpers
-* Alembic configuration for database migrations
+Authentication: JWT-based authentication
 
-**Frontend (React.js)** ✅
+Architecture: Clean, modular, scalable
 
-* Vite + Tailwind CSS setup
-* Authentication context and protected routes
-* Common components: `Navbar`, `Sidebar`, `Modal`, `Table`, etc.
-* Pages: `Login`, `Dashboard`, `Employees`, `Attendance`, `Leave`, `Recruitment`, `Payroll`, `Performance`, `Reports`, `Settings`
-* API service integrations and custom hooks: `useAuth`, `useEmployees`, `useAI`
-* AI components: `Chatbot`, `Predictive Analytics`, `Sentiment Analysis`, `Smart Scheduler`
-* Validators and utility helpers
+Deployment-ready: Works on Replit / cloud platforms
 
-**Infrastructure** ✅
+🎯 Core Objectives
 
-* `docker-compose.yml` (frontend, backend, postgres)
-* `Dockerfile` for backend and frontend
-* `.gitignore` included
-* This README with setup instructions
+Automate HR operations end-to-end
 
----
+Provide secure, role-based access
 
-## 🎯 Key Features
+Focus on reliability, scalability, and clean architecture
 
-### Core HR Features
+Suitable for interviews, demos, and real-world use
 
-* **Employee Management** — Full CRUD with departments, roles, and employee profiles
-* **Attendance Tracking** — Check-in/out, calendar view, daily/period reports
-* **Leave Management** — Request, approve/reject, multiple leave types and balances
-* **Recruitment** — Job postings, candidate pipeline, resume uploads, interview scheduling
-* **Payroll** — Salary management, payroll cycles, PDF salary slips
-* **Performance** — Reviews, goals, and appraisal workflows
-* **Reports & Analytics** — Dashboards and exportable reports
+👥 User Roles
 
-### AI‑Powered Features
+Admin
 
-* **AI Chatbot** — HR assistant for FAQs and common tasks
-* **Resume Scanner** — AI‑assisted candidate matching and ranking
-* **Predictive Analytics** — Turnover risk and performance forecasting
-* **Sentiment Analysis** — Analyze employee feedback and survey responses
-* **Smart Scheduler** — AI‑optimized shift and meeting scheduling
+Full system access
 
----
+Manage users, roles, and system settings
 
-## 🛠 Tech Stack
+HR
 
-* Backend: FastAPI, Pydantic, SQLAlchemy
-* Database: PostgreSQL
-* Migrations: Alembic
-* Frontend: React (Vite), Tailwind CSS
-* AI: OpenAI (ChatGPT / embeddings / custom prompts)
-* DevOps: Docker, Docker Compose
-* Charts: Recharts (frontend)
+Manage employees and HR workflows
 
----
+Access reports and analytics
 
-## 📦 Quick Start
+Employee
 
-### Option 1 — Docker (recommended)
+Self-service portal
 
-```bash
-# from project root
-git clone <repo-url> smart-hr
-cd smart-hr
-# create .env files for backend and frontend (see .env.example)
-docker-compose up -d --build
-```
+View personal HR data
 
-* Backend available at: `http://localhost:8000`
-* Frontend available at: `http://localhost:3000`
-* API docs: `http://localhost:8000/docs`
+📦 Core Modules (Must Implement)
+1️⃣ Authentication & Authorization
 
-### Option 2 — Manual (local development)
+Login / Signup
 
-#### Backend (Linux / macOS)
+JWT-based authentication
 
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-# configure .env file (copy .env.example -> .env)
-uvicorn app.main:app --reload --port 8000
-```
+Role-based access control
 
-#### Backend (Windows - PowerShell)
+Secure password hashing
 
-```powershell
-cd backend
-python -m venv venv
-venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
+2️⃣ Employee Management
 
-#### Frontend
+Add, update, deactivate employees
 
-```bash
-cd frontend
-npm install
-npm run dev
-# opens at http://localhost:3000
-```
+Department & designation management
 
----
+Employee profiles
 
-## ⚙️ Database & Migrations
+Document uploads (optional)
 
-1. Make sure PostgreSQL is running on port `5432` (or update `.env` accordingly).
-2. Create the database (example name: `smarthr_db`).
-3. Run Alembic migrations:
+3️⃣ Attendance Management
 
-```bash
-# from backend directory
-alembic upgrade head
-```
+Daily check-in / check-out
 
----
+Attendance records
 
-## 🔑 Environment Variables
+Late / absent marking
 
-Create `.env` files for the backend and frontend (examples included in repo). Important variables:
+Monthly attendance reports
 
-**Backend `.env`** (example)
+4️⃣ Leave Management
 
-```env
-DATABASE_URL=postgresql+psycopg2://user:password@postgres:5432/smarthr_db
-SECRET_KEY=your-secret-key
-OPENAI_API_KEY=sk-xxxxxx
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_USERNAME=your-email@example.com
-SMTP_PASSWORD=your-email-password
-FRONTEND_URL=http://localhost:3000
-```
+Leave application & approval workflow
 
-**Frontend `.env`** (example)
+Leave balance tracking
 
-```env
-VITE_API_URL=http://localhost:8000/api
-VITE_OPENAI_KEY=sk-xxxxxx # if needed for client-side features
-```
+Leave history
 
-> ⚠️ Do not commit `.env` files with real credentials to version control.
+5️⃣ Payroll Management
 
----
+Salary structure
 
-## 🔐 Default Credentials (Local Dev)
+Monthly payroll processing
 
-* **Email:** `admin@smarthr.com`
-* **Password:** `Admin@123`
+Payslip generation
 
-Use these to sign in locally or create your own admin user via seed script or directly in the database.
+Deductions & taxes (basic)
 
----
+6️⃣ Recruitment Module
 
-## 📚 API Documentation
+Job postings
 
-When the backend is running, interactive API docs are available at:
+Candidate applications
 
-```
-http://localhost:8000/docs
-```
+Hiring pipeline (applied, shortlisted, interviewed, hired)
 
----
+7️⃣ Performance Management
 
-## 🧭 Project Structure (high level)
+Performance reviews
 
-```
-smart-hr/
-├─ backend/
-│  ├─ app/
-│  │  ├─ main.py
-│  │  ├─ config.py
-│  │  ├─ database.py
-│  │  ├─ models/    # SQLAlchemy models
-│  │  ├─ schemas/   # Pydantic schemas
-│  │  ├─ routes/    # routers for employees, auth, payroll, etc.
-│  │  ├─ services/  # AI service, email, payroll helpers
-│  │  ├─ utils/     # pdf generator, validators
-│  │  └─ alembic/
-│  └─ requirements.txt
+Ratings & feedback
 
-├─ frontend/
-│  ├─ src/
-│  │  ├─ components/
-│  │  ├─ pages/
-│  │  ├─ context/   # auth context
-│  │  ├─ hooks/     # useAuth, useEmployees, useAI
-│  │  ├─ services/  # api service wrappers
-│  │  └─ styles/
-│  └─ package.json
+Appraisal records
 
-├─ docker-compose.yml
-├─ Dockerfile.backend
-├─ Dockerfile.frontend
-└─ README.md
-```
+📊 Dashboards & Reports
 
----
+Admin dashboard (system overview)
 
-## 🎨 Design & UX
+HR dashboard (employees, attendance, leaves, payroll)
 
-* Responsive UI using Tailwind CSS
-* Gradient accents and smooth micro‑animations
-* Card‑based layout, consistent spacing, and clean typography
-* Interactive charts (Recharts) for dashboards
-* Toast notifications and loading/error states
+Employee dashboard (personal data & history)
 
----
+Visual reports using charts and tables
 
-## 🧪 Testing & Quality
+🗂️ Backend Requirements
 
-* Follow repository linting rules (ESLint, Prettier, Black/Flake8 for Python if configured)
-* Add unit/integration tests where relevant (not included by default)
+Proper folder structure
 
----
+SQLAlchemy ORM models
 
-## 🔄 Next Steps / Checklist
+Pydantic schemas
 
-1. Set up PostgreSQL and create the database
-2. Update `.env` files with real credentials
-3. Install dependencies for frontend and backend
-4. Run migrations: `alembic upgrade head`
-5. Start services (Docker or manual)
-6. Verify `http://localhost:8000/docs` for APIs and `http://localhost:3000` for the UI
-7. Configure CI/CD, backups, and secret management for production
+RESTful APIs
 
----
+Input validation & error handling
 
-## ❗ Notes & Disclaimers
+Environment-based configuration
 
-* The project is production‑grade in structure and follows modular best practices, but **you must** review and secure secrets, CORS policies, authentication flows, and rate limiting before deploying to production.
-* AI features depend on your OpenAI API key — usage may incur costs. Tune prompts and monitor usage.
-* This README was generated automatically; please double‑check instructions and update environment examples to match your deployment environment.
+Clean, readable code
 
----
+🎨 Frontend Requirements
 
-## 🙋 Need Changes?
+Modern, responsive UI
 
-If you want a different tone (shorter, developer‑focused, or end‑user guide), or want this exported as `README.md` file in the repo, tell me which format and I'll generate it.
+Sidebar navigation layout
 
----
+Forms, tables, and modals
 
-*All files are ready to use and follow best practices for modular, maintainable, and scalable web applications.*
+API integration using Axios / Fetch
 
-*Generated with assistance from an AI. Please verify configuration and secrets before production deploy.*
+Authentication flow (protected routes)
+
+Reusable components
+
+📁 Expected Deliverables
+
+Complete backend & frontend directory structure
+
+All required code files
+
+PostgreSQL database schema
+
+Sample seed data
+
+Comprehensive README including:
+
+Features
+
+Setup instructions
+
+Tech stack
+
+API overview
+
+Future improvements
+
+🚀 Bonus (Optional)
+
+Docker support
+
+Swagger / OpenAPI documentation
+
+Deployment instructions
+
+Role-based UI access
+
+⚠️ Constraints
+
+Do not skip files listed in the directory structure
+
+Provide complete, working code
+
+Follow real-world best practices
+
+Ensure the system is extendable and maintainable
+
+Note I want it in javascript and no typescript
